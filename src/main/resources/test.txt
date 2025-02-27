@@ -1,0 +1,1 @@
+Write a Java program to find the SHA-256 hash of a String. Print the Hex of the Hash Value. Show that if the String changes by just 1 character, the digest value changes completely. What cryptographic hash function property is met here? 
