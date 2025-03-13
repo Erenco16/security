@@ -75,13 +75,15 @@ public class DiffieHellman {
             PublicKey publicKey2 = (PublicKey) readFromFile("BobPublic");
             // AlicePrivate and BobPublic
             KeyAgreement ka = KeyAgreement.getInstance("DH");
-            ka.init(privateKey1); ka.doPhase(publicKey2, true);
+            ka.init(privateKey1);
+            ka.doPhase(publicKey2, true);
             byte[] rawValue = ka.generateSecret();
             SecretKey secretKey1 = new SecretKeySpec(rawValue, 0, 16, "AES");
             String encodedKey = Base64.getEncoder().encodeToString(secretKey1.getEncoded());
             System.out.println("Base64 encoded secret key 1 " + encodedKey);
             // AlicePublic and BobPrivate
-            ka.init(privateKey2); ka.doPhase(publicKey1, true);
+            ka.init(privateKey2);
+            ka.doPhase(publicKey1, true);
             byte[] rawValue2 = ka.generateSecret();
             SecretKey secretKey2 = new SecretKeySpec(rawValue2, 0, 16, "AES");
             String encodedKey2 = Base64.getEncoder().encodeToString(secretKey2.getEncoded());
@@ -90,12 +92,6 @@ public class DiffieHellman {
                 System.out.println("Base64 encoded secret keys are not same");
             }
             System.out.println("Base64 encoded secret keys are same");
-        }
-    }
-
-    public class Q4{
-        public static void DHCCLient() throws Exception {
-
         }
     }
 
